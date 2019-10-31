@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
   // Add odometry factors
   // Create odometry (Between) factors between consecutive poses
   // robot makes 90 deg right turns at x3 - x5
-  graph.add(BetweenFactor<Pose2>(Symbol('x', 1), Symbol('x', 2), Pose2(5, 0, 0), odomModel));
+  graph.add(BetweenFactor<Pose2>(Symbol('x', 1), Symbol('x', 2), Pose2(5, 0, 0), odomModel));//BetweenFactor is a class
   graph.add(BetweenFactor<Pose2>(Symbol('x', 2), Symbol('x', 3), Pose2(5, 0, 0), odomModel));
 
   // 2D 'GPS' measurement noise model, 2-dim
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
   // Add the GPS factors
   // note that there is NO prior factor needed at first pose, since GPS provides
   // the global positions (and rotations given more than 1 GPS measurements)
-  graph.add(GPSPose2Factor(Symbol('x', 1), Point2(0, 0), gpsModel));
+  graph.add(GPSPose2Factor(Symbol('x', 1), Point2(0, 0), gpsModel));//GPSPose2Factor is a class
   graph.add(GPSPose2Factor(Symbol('x', 2), Point2(5, 0), gpsModel));
   graph.add(GPSPose2Factor(Symbol('x', 3), Point2(10, 0), gpsModel));
   
